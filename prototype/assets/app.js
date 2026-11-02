@@ -14,7 +14,7 @@
   APP.go = function (path) { if (location.hash === '#' + path) APP.render(); else location.hash = path; };
   APP.parse = function () {
     var h = (location.hash || '').replace(/^#/, '');
-    if (!h) { var me = ST.me(); h = me ? (me.role === 'admin' ? '/admin' : '/') : '/login'; history.replaceState(null, '', '#' + h); }
+    if (!h) { h = '/'; history.replaceState(null, '', '#' + h); }
     function decode(s) { try { return decodeURIComponent(s); } catch (e) { return s; } }
     var parts = h.split('?')[0].split('/').filter(Boolean).map(decode);
     var qs = {}; (h.split('?')[1] || '').split('&').forEach(function (kv) { if (kv) { var p = kv.split('='); qs[p[0]] = decode(p[1] || ''); } });
